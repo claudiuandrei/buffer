@@ -1,73 +1,83 @@
-# Circular Linked List backed Queue
+# Buffer
 
-This is queue based on a circular singly linked list implementation that follows the itterator interface, being a drop in replacement for iterable structure when you need a list.
+This is buffer based on a circular singly linked list implementation that follows the itterator interface, being a drop in replacement for iterable structure when you need a list. When used unbound, it acts like a queue, when used bound, will start evicting once it hits the maxSize.
 
 ## Usage Deno
 
 ```ts
-import Queue from "https://deno.land/x/one_queue/mod.ts";
+import Buffer from "https://deno.land/x/buffer/mod.ts";
 ```
 
 ## Usage Node
 
 ```bash
-npm install --save @denox/one_queue
+npm install --save @denox/buffer
 ```
 
 ```js
-import Queue from "@denox/one_queue";
+import Buffer from "@denox/Buffer";
 ```
 
 ## API
 
 ### Initialization
 
-The only argument is `entries` and it is optional, allowing prepopulating the queue.
+The only argument is `entries` and it is optional, allowing prepopulating the buffer.
 
 ```js
-const queue = new Queue(); // Creates an empty queue
-const queueWithData = new Queue(["value1", "value2"]); // Creates a queue with 2 entries
+const queue = new Buffer(); // Creates an empty queue
+const queueWithData = new Buffer(Infinity, ["value1", "value2"]); // Creates a queue with 2 entries
+
+const buffer = new Buffer(100); // Creates an empty buffer
+const bufferWithData = new Buffer(100, ["value1", "value2"]); // Creates a buffer with 2 entries
 ```
 
 ### Push
 
-Add a value to end of the queue.
+Add a value to end of the buffer.
 
 ```js
-queue.push("value");
+buffer.push("value");
 ```
 
 ### Pop
 
-Retrieve a value from begining of the queue.
+Retrieve a value from begining of the buffer.
 
 ```js
-queue.pop(); // "value"
+buffer.pop(); // "value"
 ```
 
 ### Peek
 
-Retrieve a value from begining of the queue, similar with `pop` but without changing the queue.
+Retrieve a value from begining of the buffer, similar with `pop` but without changing the buffer.
 
 ```js
-// Same behavior as get but without moving the key/value to the end of the eviction queue
-queue.peek("key");
+buffer.peek("key");
 ```
 
 ### Clear
 
-Clear everything from the queue, leaving the queue empty.
+Clear everything from the buffer, leaving the queue empty.
 
 ```js
-queue.clear();
+buffer.clear();
 ```
 
 ### Size
 
-Get the current size of the queue.
+Get the current size of the buffer.
 
 ```js
-queue.size; // Number
+buffer.size; // Number
+```
+
+### MaxSize
+
+Get the capacity of the buffer.
+
+```js
+buffer.maxSize; // Number
 ```
 
 ### Keys, Values, Entries
@@ -75,9 +85,9 @@ queue.size; // Number
 Get the iterators for `keys`, `values` or `entries` ordered based on the insetion.
 
 ```js
-Array.from(queue.keys()); // [value1, value2, ...]
-Array.from(queue.values()); // [value1, value2, ...]
-Array.from(queue.entries()); // [[value1, value1], [value2, value2], ...]
+Array.from(buffer.keys()); // [value1, value2, ...]
+Array.from(buffer.values()); // [value1, value2, ...]
+Array.from(buffer.entries()); // [[value1, value1], [value2, value2], ...]
 ```
 
 ### ForEach
@@ -85,7 +95,7 @@ Array.from(queue.entries()); // [[value1, value1], [value2, value2], ...]
 Iterate over the values in the insersion order.
 
 ```js
-queue.forEach((value, key, list) => {
+buffer.forEach((value, key, buffer) => {
 	//...
 });
 ```

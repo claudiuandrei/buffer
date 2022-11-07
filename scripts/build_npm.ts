@@ -16,17 +16,17 @@ await build({
 	},
 	package: {
 		// package.json properties
-		name: "@denox/one_queue",
+		name: "@denox/buffer",
 		version: Deno.args[0],
-		description: "Queue, backed by a Circular Singly Linked List.",
+		description: "Buffer, backed by a Circular Singly Linked List.",
 		license: "MIT",
-		keywords: ["queue", "list", "circular", "linked list"],
+		keywords: ["buffer", "queue", "list", "circular", "linked list"],
 		repository: {
 			type: "git",
-			url: "git+https://github.com/claudiuandrei/queue.git",
+			url: "git+https://github.com/claudiuandrei/buffer.git",
 		},
 		bugs: {
-			url: "https://github.com/claudiuandrei/queue/issues",
+			url: "https://github.com/claudiuandrei/buffer/issues",
 		},
 		engines: {
 			node: ">=11.0.0",
