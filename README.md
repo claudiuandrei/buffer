@@ -53,7 +53,7 @@ buffer.pop(); // "value"
 Retrieve a value from begining of the buffer, similar with `pop` but without changing the buffer.
 
 ```js
-buffer.peek("key");
+buffer.peek(); // "value"
 ```
 
 ### Clear
