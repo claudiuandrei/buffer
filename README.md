@@ -15,7 +15,7 @@ npm install --save @denox/buffer
 ```
 
 ```js
-import Buffer from "@denox/Buffer";
+import Buffer from "@denox/buffer";
 ```
 
 ## API
